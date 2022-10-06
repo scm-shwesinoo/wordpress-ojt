@@ -1,5 +1,6 @@
 <?php
 
+
 function custom_theme_assets() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
@@ -58,6 +59,7 @@ function custom_post_type() {
           'publicly_queryable'  => true,
           'capability_type'     => 'post',
           'show_in_rest' => true,
+          'taxonomies'          => array( 'category' ),
     
       );
         
@@ -83,3 +85,34 @@ function add_my_post_types_to_query( $query ) {
     return $query;
 }
 //=========================================================================================
+
+/*
+* Define a constant path to our single template folder
+*/
+define('SINGLE_PATH', 'TEMPLATEPATH' . '/single');
+  
+/**
+* Filter the single_template with our custom function
+*/
+add_filter('single_template', 'my_single_template');
+  
+/**
+* Single template function which will choose our template
+*/
+function my_single_template($single) {
+global $wp_query, $post;
+  
+/**
+* Checks for single template by category
+* Check by category slug and ID
+*/
+foreach((array)get_the_category() as $cat) :
+  
+if(file_exists('SINGLE_PATH' . '/single-cat-' . $cat->slug . '.php'))
+return 'SINGLE_PATH' . '/single-cat-' . $cat->slug . '.php';
+  
+elseif(file_exists('SINGLE_PATH' . '/single-cat-' . $cat->term_id . '.php'))
+return 'SINGLE_PATH' . '/single-cat-' . $cat->term_id . '.php';
+  
+endforeach;
+}

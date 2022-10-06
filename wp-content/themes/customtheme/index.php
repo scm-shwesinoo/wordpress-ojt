@@ -7,7 +7,9 @@ if ( have_posts() ) :
 
     <article class="post">
         <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+		<div class="home-content">
 		<?php the_content() ?>
+		</div>
     </article>
 	
 	<?php endwhile;
@@ -17,6 +19,7 @@ else :
 
 endif;
 
+get_sidebar(); //sidebar
 get_footer();
 
 ?>
