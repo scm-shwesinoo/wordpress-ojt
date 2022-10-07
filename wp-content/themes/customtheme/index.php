@@ -23,7 +23,7 @@ if ( have_posts() ) :
 
 	<?php the_field('official_email_address'); ?>
 
-<h2>ACF: <?php the_field('official_email_address'); ?></h2>
+<!-- <h2>ACF: <?php the_field('official_email_address'); ?></h2> -->
 
 	<?php endwhile;
 
@@ -32,11 +32,11 @@ else :
 
 endif;
 ?>
-
+<?php posts_nav_link('separator','Previous','Next'); ?>
 
 
 <?php
-get_sidebar(); //sidebar
+// get_sidebar(); //sidebar
 get_footer();
 
 ?>

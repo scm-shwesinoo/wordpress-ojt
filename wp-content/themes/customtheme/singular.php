@@ -1,31 +1,14 @@
-<!-- for single page -->
+<!-- for single post -->
+
 <?php
 get_header();
-$email = the_field('official_email_address');
+
 ?>
+<!-- <h2 style="text-align: center">Welcome From Custom Single Post</h2> -->
 
-<main id="site-content">
-<?php echo $email?>
-<h2 style="text-align: center">Welcome From Custom Single Page</h2>
-<?php if( get_field('official_email_address') ): ?>
-		<?php echo 'hello' ?>
-<?php endif; ?>
-	<?php
-
-	if ( have_posts() ) {
-
-		while ( have_posts() ) {
-			the_post();		
-			?>
-			<h2><?php the_field('official_email_address'); ?></h2>
-			<h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
-			<?php the_content() ?>
-			<?php
-		}
-	}
-
-	?>
-
-</main><!-- #site-content -->
+<article class="sg-page">
+    <h2><?php the_title() ?></h2>
+	<?php the_content() ?>
+</article>
 
 <?php get_footer(); ?>

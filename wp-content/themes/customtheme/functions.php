@@ -60,19 +60,16 @@ function custom_post_type() {
           'capability_type'     => 'post',
           'show_in_rest' => true,
           'taxonomies'          => array( 'category' ),
-    
       );
         
       // Registering your Custom Post Type
       register_post_type( 'movies', $args );
-    
   }
     
   /* Hook into the 'init' action so that the function
   * Containing our post type registration is not 
   * unnecessarily executed. 
   */
-    
   add_action( 'init', 'custom_post_type', 0 );
 
 
@@ -106,13 +103,15 @@ global $wp_query, $post;
 * Checks for single template by category
 * Check by category slug and ID
 */
-foreach((array)get_the_category() as $cat) :
-  
-if(file_exists('SINGLE_PATH' . '/single-cat-' . $cat->slug . '.php'))
-return 'SINGLE_PATH' . '/single-cat-' . $cat->slug . '.php';
-  
-elseif(file_exists('SINGLE_PATH' . '/single-cat-' . $cat->term_id . '.php'))
-return 'SINGLE_PATH' . '/single-cat-' . $cat->term_id . '.php';
-  
-endforeach;
+foreach((array)get_the_category() as $cat) :  
+    if(file_exists('SINGLE_PATH' . '/single-cat-' . $cat->slug . '.php'))
+        return 'SINGLE_PATH' . '/single-cat-' . $cat->slug . '.php';
+    
+    elseif(file_exists('SINGLE_PATH' . '/single-cat-' . $cat->term_id . '.php'))
+        return 'SINGLE_PATH' . '/single-cat-' . $cat->term_id . '.php';
+    
+    endforeach;
 }
+
+add_image_size('my-custom-size', 1200, 600, true);
+// add_filter( 'show_admin_bar', '__return_false' ); //hide admin bar

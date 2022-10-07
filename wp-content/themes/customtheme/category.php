@@ -6,7 +6,7 @@
 get_header(); ?> 
  
 <section id="primary" class="site-content">
-<h3 style="background-color: violet">Welcome From Category Page</h3>
+<!-- <h3 style="background-color: violet">Welcome From Category Page</h3> -->
 		<h2><?php the_field('official_email_address'); ?></h2>
 <div id="content" role="main">
 
@@ -32,7 +32,6 @@ if ( have_posts() ) : ?>
 // The Loop
 while ( have_posts() ) : the_post(); ?>
 <div>
-<h2><?php the_field('official_email_address'); ?></h2>
 <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
  
@@ -57,6 +56,4 @@ else: ?>
 </div>
 </section>
  
- 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

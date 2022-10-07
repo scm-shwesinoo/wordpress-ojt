@@ -9,6 +9,7 @@
 
 <body <?php body_class(); ?>>
 
+<div class="outer">
 <div class="container-fluid">
 <div class="container">
 <header class="site-header">
@@ -36,6 +37,7 @@
 <h2>With HTML list</h2>
 <ul>
     <li><a href="<?php echo home_url(); ?>">Home</a></li>
+    <li><a href="<?php echo home_url(); ?>/about">Home</a></li>
     <li><a href="<?php bloginfo("template_url")?>/about">About</a></li>
     <li><a href="<?php bloginfo("template_url")?>/services">Services</a></li>
 </ul>
